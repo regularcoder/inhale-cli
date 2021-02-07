@@ -6,7 +6,8 @@ const Gradient = require('ink-gradient');
 
 const App = () => {
 	const durationInSeconds = 10;
-	const breathingStates = ['Breathe in', 'Hold', 'Breathe out']
+	const gradients = ['vice', 'passion', 'teen', 'passion']
+	const breathingStates = ['Breathe in', 'Hold', 'Breathe out', 'Hold']
 	const [current, setCurrent] = React.useState(0);
 	const [timer, setTimer] = React.useState(durationInSeconds);
 
@@ -16,7 +17,7 @@ const App = () => {
 			setTimer(newValue || durationInSeconds);
 
 			if (newValue == 0) {
-				setCurrent((current + 1) % 3);
+				setCurrent((current + 1) % 4);
 			}
 		}, 1000);
 
@@ -27,12 +28,12 @@ const App = () => {
 		<>
 			<Box alignItems="center" flexDirection="column">
 				<Box>
-					<Gradient name="vice">
+					<Gradient name={gradients[current]}>
 						<BigText text={breathingStates[current]} font="block" />
 					</Gradient>
 				</Box>
 				<Box>
-					<Gradient name="vice">
+					<Gradient name={gradients[current]}>
 						<BigText text={timer.toString()} font="block" />
 					</Gradient>
 				</Box>
